@@ -6,8 +6,3 @@ module "Ec2_infrastructure" {
   instance_type      = lookup(var.instance_type, terraform.workspace, "t3.micro")
 }
 
-# module "S3_bucket" {
-#   source = "./module/S3"
-#   log_bucket_name    = var.log_bucket_name
-#   main_bucket_name   = var.main_bucket_name
-# }
