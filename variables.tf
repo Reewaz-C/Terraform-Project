@@ -21,9 +21,9 @@ variable "instance_type" {
   description = "Ec2 instance type"
   type        = map(string)
   default = {
-    "dev" = "t3.micro"
+    "dev"   = "t3.micro"
     "stage" = "t2.medium"
-    "prod" = "t2.large"
+    "prod"  = "t2.large"
   }
 }
 
