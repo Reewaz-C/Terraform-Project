@@ -1,10 +1,19 @@
 variable "instance_type" {
   description = "Ec2 instance type"
   type        = string
-  default     = "t3.micro"
+}
 
-  validation {
-    condition     = contains(["t3.micro", "t2.medium", "t2.large"], var.instance_type)
-    error_message = "Instance must be t3.micro, t2.mediumor t2.large."
-  }
+variable "subnet_id" {
+  description = "Subnet ID where EC2 instance will be launched"
+  type        = string
+}
+
+variable "name" {
+  description = "Name of Instance"
+  type = string
+}
+
+variable "vpc_security_group_ids" {
+  description = "SG Ids"
+  type = list(string)
 }

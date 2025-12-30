@@ -1,47 +1,55 @@
-variable "region" {
-  description = "Aws region"
+variable "db_name" {
+  description = "Name of DB"
   type        = string
-  default     = "us-east-1"
 }
 
-variable "instance_type" {
-  description = "Ec2 instance type"
+variable "engine" {
+  description = "DB Engine Name"
   type        = string
-  default     = "t3.micro"
-
-  validation {
-    condition     = contains(["t3.micro", "t2.medium", "t2.large"], var.instance_type)
-    error_message = "Instance must be t3.micro, t2.mediumor t2.large."
-  }
 }
 
-variable "vpc_cidr" {
-  description = "CIDR block for VPC"
+variable "engine_version" {
+  description = "DB Engine Version"
   type        = string
-  default     = "10.0.0.0/16"
 }
 
-variable "public_subnet_cidr" {
-  description = "cidr for public subnet"
+variable "instance_class" {
+  description = "Instance Class"
   type        = string
-  default     = "10.0.1.0/24"
 }
 
-variable "availability_zone" {
-  description = "Availability zone for subnet"
+variable "username" {
+  description = "Username of Database"
   type        = string
-  default     = "us-east-1a"
-
-  validation {
-    condition     = contains(["us-east-1a", "us-east-1b", "us-east-1c"], var.availability_zone)
-    error_message = "Availability ZOnes must be us-east-1a, us-east-1b or us-east-1c "
-  }
 }
 
-variable "public_route" {
-  description = "public route for public subnet"
+variable "password" {
+  description = "Database Password"
   type        = string
-  default     = "0.0.0.0/0"
 }
 
+variable "parameter_group_name" {
+  description = "DB parameter group name"
+  type        = string
+}
 
+variable "skip_final_snapshot" {
+  description = "DB final snapshot"
+  type        = bool
+}
+
+variable "vpc_security_group_ids" {
+  description = "Security group of DB"
+  type        = list(string)
+}
+
+variable "db_subnet_group_name" {
+  description = "Database SUbnet"
+  type        = string
+}
+
+variable "allocated_storage" {
+  description = "DB allocated storage"
+  type        = number
+  default     = 10
+}

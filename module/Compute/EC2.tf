@@ -9,11 +9,11 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "server" {
   ami                    = data.aws_ami.ubuntu.id
-  vpc_security_group_ids = [aws_security_group.EC2SG.id]
-  subnet_id              = aws_subnet.EC2_subnet.id
+  vpc_security_group_ids = var.vpc_security_group_ids
+  subnet_id              = var.subnet_id
   instance_type          = var.instance_type
   tags = {
-    Name = "My-Server"
+    Name = var.name
   }
 }
 
