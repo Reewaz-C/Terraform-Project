@@ -77,3 +77,23 @@ resource "aws_instance" "server" {
   }
 }
 
+resource "aws_eip" "ip" {
+  domain = "vpc"
+
+  instance = aws_instance.server.id
+  depends_on = [aws_internet_gateway.EC2_IGW]
+}
+
+resource "aws_ebs_volume" "vol" {
+  availability_zone = var.availability_zone
+  size = 1
+  tags = {
+    Name = "Extra storage"
+  }
+}
+
+resource "aws_volume_attachment" "attach" {
+  device_name = "/dev/sdh"
+  volume_id = aws_ebs_volume.vol.id
+  instance = aws_instance.server.id
+}
