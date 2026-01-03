@@ -4,8 +4,8 @@
 
 This project provisions an AWS infrastructure using **Terraform modules**, including:
 
-- A **VPC with public subnet**
-- An **EC2 instance**
+- A **VPC with public subnet and SG**
+- An **EC2 instance with EBS and EIP**
 - A **secure S3 main bucket**
 - A **secure S3 log bucket** for access logging
 
